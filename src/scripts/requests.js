@@ -1,3 +1,6 @@
+import {toast} from "./toast.js"
+
+
 const baseUrl = "http://localhost:3333";
 const token = localStorage.getItem("@petinfo:token");
 
@@ -28,3 +31,141 @@ export async function getAllPosts() {
 }
 
 // Desenvolva as funcionalidades de requisições aqui
+
+export const requestLogin= async (login) => {
+  const token = await fetch(`${baseUrl}/login`,{
+    method: 'POST',
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify(login)
+  })
+  .then(async (response) => {
+    const convert= await response.json()
+  
+    localStorage.setItem('@petinfo:token', convert.token)
+     
+
+    if(response.ok){
+      toast('Login realizado com sucesso','#087F5B')
+
+      setTimeout(()=>{
+        location.replace('./src/pages/feed.html')
+      },1000)
+
+      return convert
+    }else{
+      if(convert.message === "O email está incorreto"){
+
+        const smallEmaill = document.querySelector('#wrong-email')
+        const inputEmaill=  document.querySelector('#Email')
+
+        smallEmaill.classList.remove('hidden')
+        inputEmaill.classList.add('alert1')
+      }
+      else if(convert.message === "A senha está incorreta"){
+
+        const smallPassword = document.querySelector('#wrong-password')
+        const inputPassword=  document.querySelector('#Senha')
+
+        smallPassword.classList.remove('hidden')
+        inputPassword.classList.add('alert1')
+      }
+  
+    }
+  })
+  return token
+
+}
+
+export async function requestResgister(createUser){
+  const response = await fetch(`${baseUrl}/users/create`,{
+    method: 'POST',
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify(createUser)
+  })
+  .then(async (response) => {
+    const convert= await response.json()
+
+    if(response.ok){
+
+      toast('Cadastro realizado com sucesso','#087F5B')  
+      
+    }else{
+      toast(convert.message,'#c83751')
+    }
+
+  })
+  return response
+
+}
+
+// Criando post
+export async function createPostRequest(postBody){
+  const newPost = await fetch(`${baseUrl}/posts/create`,{
+    method: 'POST',
+    headers:{
+      'Content-Type':'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(postBody)
+  })
+  .then(async(response) =>{
+    const convert= await response.json()
+    
+    if(response.ok){
+      toast('Post criado com sucesso','#087F5B')
+
+      return convert
+    }else{
+      toast(convert.message, '#c83751')
+    }
+  })
+  return newPost
+
+}
+
+//Editar post
+export async function editPost(postId, taskBody){
+  const edit = await fetch(`${baseUrl}/posts/${postId}`,{
+    method: 'PATCH',
+    headers:{
+      'Content-Type':'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(taskBody)
+  })
+  .then(async(response) =>{
+    const convert= await response.json()
+    
+    if(response.ok){
+      return convert
+    }else{
+      toast(convert.message, '#c83751')
+    }
+  })
+  return edit
+}
+
+//Delete post
+export async function editPost(postId){
+  const edit = await fetch(`${baseUrl}/posts/${postId}`,{
+    method: 'DELETE',
+    headers:{
+      'Content-Type':'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  })
+  .then(async(response) =>{
+    const convert= await response.json()
+    
+    if(response.ok){
+      return convert
+    }else{
+      toast(convert.message, '#c83751')
+    }
+  })
+  return edit
+}

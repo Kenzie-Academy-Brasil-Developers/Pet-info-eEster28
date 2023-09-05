@@ -49,3 +49,7 @@ strong {
 .alert {
   color: var(--alert-1);
 }
+
+.alert1{
+  border: 1px solid var(--alert-1);
+}

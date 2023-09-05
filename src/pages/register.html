@@ -9,7 +9,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../styles/reset.css" />
     <link rel="stylesheet" href="../styles/globalStyles.css" />
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- Scripts -->
     <script type="module" src="../scripts/register.js" defer></script>
   </head>
@@ -22,7 +22,7 @@
           <label class="text3 bold" for="user">Usuário</label>
           <input
             name="username"
-            class="text3"
+            class="text3 inputs__register"
             type="text"
             id="user"
             placeholder="Digite seu username aqui"
@@ -31,28 +31,28 @@
           <label class="text3 bold" for="Email">Email</label>
           <input
             name="email"
-            class="text3"
+            class="text3 inputs__register"
             type="email"
             id="Email"
             placeholder="Digite seu email aqui"
             required
           />
-          <label class="text3 bold" for="picture">Link da foto de perfil</label>
-          <input
-            name="avatar"
-            class="text3"
-            type="text"
-            id="picture"
-            placeholder="Insira o link aqui"
-            required
-          />
           <label class="text3 bold" for="Senha">Senha</label>
           <input
             name="password"
-            class="text3"
+            class="text3 inputs__register"
             type="password"
             id="Senha"
             placeholder="Digite sua senha aqui"
+            required
+          />
+          <label class="text3 bold" for="picture">Link da foto de perfil</label>
+          <input
+            name="avatar"
+            class="text3 inputs__register"
+            type="text"
+            id="picture"
+            placeholder="Insira o link aqui"
             required
           />
         </fieldset>
@@ -83,5 +83,6 @@
         />
       </section>
     </main>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>
