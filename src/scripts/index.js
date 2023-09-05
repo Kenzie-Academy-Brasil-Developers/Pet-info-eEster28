@@ -26,6 +26,7 @@ function handleLogin() {
     })
 
 }
+
 function buttonRegister(){
     const button = document.querySelector('#register__button')
     button.addEventListener('click', (event) =>{

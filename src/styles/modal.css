@@ -1,0 +1,50 @@
+.controller__new--post {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gray-9);
+    padding: 1rem;
+}
+
+.header__modal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+}
+
+label {
+    color: var(--gray-1);
+}
+
+.inputs__post {
+    display: flex;
+    flex-direction: column;
+}
+
+.conteiner__buttons--modal {
+    margin-top: 1.875rem;
+    align-self: flex-end;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.conteiner__buttons--modal>button {
+    border-radius: var(--defaultRadius);
+    border: none;
+    padding: 0.6rem 0.9rem 0.6rem 0.9rem;
+}
+
+.button__public--post {
+    color: var(--gray-9);
+    background-color: var(--brand-1);
+    border-color: var(--brand-1);
+}
+
+.button__cancel--post {
+    color: var(--gray-1);
+}
+
+.button__close {
+    color: var(--gray-4);
+    border: none;
+    background-color: var(--gray-9);
+}

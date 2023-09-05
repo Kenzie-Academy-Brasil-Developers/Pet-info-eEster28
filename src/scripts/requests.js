@@ -32,6 +32,7 @@ export async function getAllPosts() {
 
 // Desenvolva as funcionalidades de requisições aqui
 
+//Login 
 export const requestLogin= async (login) => {
   const token = await fetch(`${baseUrl}/login`,{
     method: 'POST',
@@ -42,9 +43,8 @@ export const requestLogin= async (login) => {
   })
   .then(async (response) => {
     const convert= await response.json()
-  
+ 
     localStorage.setItem('@petinfo:token', convert.token)
-     
 
     if(response.ok){
       toast('Login realizado com sucesso','#087F5B')
@@ -78,6 +78,7 @@ export const requestLogin= async (login) => {
 
 }
 
+//Cadastro
 export async function requestResgister(createUser){
   const response = await fetch(`${baseUrl}/users/create`,{
     method: 'POST',
@@ -106,10 +107,7 @@ export async function requestResgister(createUser){
 export async function createPostRequest(postBody){
   const newPost = await fetch(`${baseUrl}/posts/create`,{
     method: 'POST',
-    headers:{
-      'Content-Type':'application/json',
-      Authorization: `Bearer ${token}`
-    },
+    headers: requestHeaders,
     body: JSON.stringify(postBody)
   })
   .then(async(response) =>{
@@ -117,7 +115,6 @@ export async function createPostRequest(postBody){
     
     if(response.ok){
       toast('Post criado com sucesso','#087F5B')
-
       return convert
     }else{
       toast(convert.message, '#c83751')
@@ -150,7 +147,7 @@ export async function editPost(postId, taskBody){
 }
 
 //Delete post
-export async function editPost(postId){
+export async function deletePost(postId){
   const edit = await fetch(`${baseUrl}/posts/${postId}`,{
     method: 'DELETE',
     headers:{
@@ -162,7 +159,7 @@ export async function editPost(postId){
     const convert= await response.json()
     
     if(response.ok){
-      return convert
+      toast(convert.message, '#087F5B')
     }else{
       toast(convert.message, '#c83751')
     }

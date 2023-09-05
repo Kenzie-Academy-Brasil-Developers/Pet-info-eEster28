@@ -10,10 +10,11 @@ export async function renderAllPosts() {
     const postArticle = await renderPost(post, true);
     postSection.appendChild(postArticle);
   });
+ 
 }
 
 // Renderiza um post
-async function renderPost(post) {
+export async function renderPost(post) {
   const postContainer = document.createElement("article");
   postContainer.classList.add("post");
 
@@ -40,7 +41,7 @@ async function renderPost(post) {
 }
 
 // Verifica a permissao do usuário para editar/deletar um post
-async function checkEditPermission(authorID) {
+export async function checkEditPermission(authorID) {
   const { id } = await getCurrentUserInfo();
 
   if (Object.values({ id }, [0]).toString() == authorID) {
@@ -51,7 +52,7 @@ async function checkEditPermission(authorID) {
 }
 
 // Renderiza o cabeçalho de um post no feed
-async function renderPostHeader(post) {
+export async function renderPostHeader(post) {
   const userInfo = post.user;
 
   const postDateInfo = handleDate(post.createdAt);

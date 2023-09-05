@@ -1,48 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Petinfo - Feed</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../../src/styles/reset.css" />
-    <link rel="stylesheet" href="../../src/styles/globalStyles.css" />
-    <link rel="stylesheet" href="../../src/styles/feed.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <!-- SCRIPTS -->
-    <script type="module" src="../scripts/feed.js" defer></script>
-  </head>
-  <body>
-    <header class="header">
-      <div class="header__container">
-        <h2 class="title3 header__title bold">Petinfo</h2>
-        <nav class="user-nav__container">
-          <div class="user__action">
-            <button id="user__newpost" class="btn btn--brand btn--large text3">
-              Criar publicação
-            </button>
-            <img class="user__image" src="" alt="" />
-          </div>
-          <div class="user__logout hidden">
-            <h2 class="user__uniquename text3 bolder"></h2>
-            <button class="text4 logout__button">
-              <div class="logout__icon"></div>
-              Sair da conta
-            </button>
-          </div>
-        </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Petinfo - Feed</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../src/styles/reset.css" />
+  <link rel="stylesheet" href="../../src/styles/globalStyles.css" />
+  <link rel="stylesheet" href="../../src/styles/feed.css" />
+  <link rel="stylesheet" href="../styles/modal.css" />
+  <link rel="stylesheet" href="../styles/components/texts.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- SCRIPTS -->
+  <script type="module" src="../scripts/feed.js" defer></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__container">
+      <h2 class="title3 header__title bold">Petinfo</h2>
+      <nav class="user-nav__container">
+        <div class="user__action">
+          <button id="user__newpost" class="btn btn--brand btn--large text3">
+            Criar publicação
+          </button>
+          <img class="user__image" src="" alt="" />
+        </div>
+        <div class="user__logout hidden">
+          <h2 class="user__uniquename text3 bolder"></h2>
+          <button class="text4 logout__button">
+            <div class="logout__icon"></div>
+            Sair da conta
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="main">
+    <h1 class="feed__title text2 bolder">Feed</h1>
+
+    <!-- POSTS -->
+    <section class="posts">
+      <!-- Aqui serão renderizados os posts -->
+    </section>
+  </main>
+  <dialog id="modal__controller--post">
+    <div class="controller__new--post">
+
+      <div class="header__modal">
+        <h2 class="title3 bolder">Criando novo post</h2>
+        <button class="button__close">X</button>
       </div>
-    </header>
-    <main class="main">
-      <h1 class="feed__title text2 bolder">Feed</h1>
 
-      <!-- POSTS -->
-      <section class="posts">
-        <!-- Aqui serão renderizados os posts -->
-      </section>
-    </main>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  </body>
+      <form class="inputs__post">
+        <label class="text3 bold" for="user">Título do post</label>
+        <input name="title" class="text3 inputs__register" type="text" id="user" placeholder="Digite título aqui" />
+
+        <label class="text3 bold" for="text">Conteúdo do post</label>
+        <textarea name="content" placeholder="Desenvolva o conteúdo do post aqui" class="text3 inputs__register" id=""
+        cols="100" rows="8"></textarea>
+
+      </form>
+
+      <div class="conteiner__buttons--modal">
+        <button class="button__cancel--post">Cancelar</button>
+        <button class="button__public--post">Publicar</button>
+      </div>
+
+    </div>
+  </dialog>
+
+  <dialog id="modal__open--post" >
+  </dialog>
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+
 </html>
