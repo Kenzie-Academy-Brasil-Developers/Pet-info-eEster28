@@ -1,6 +1,13 @@
 import {handleNewPost, showPostModal, openContentPost} from "./modal.js"
 import { renderAllPosts } from "./render.js";
-//import {createPostRequest, editPost, deletePost} from "./requests.js"
+
+function authentication(){
+  const token = localStorage.getItem("@petinfo:token");
+
+  if (!token) {
+    location.replace("../../");
+  }
+};
 
 async function getName(){
   const token = localStorage.getItem("@petinfo:token")
@@ -37,18 +44,21 @@ function showUserMenu() {
 }
 
 async function main() {
+
   // Adiciona os eventos de click ao menu flutuante de logout
   showUserMenu();
+
   // Renderiza todos os posts no feed (render.js)
   await renderAllPosts();
 
+  // Renderiza o modal
   showPostModal()
-
   handleNewPost()
-  
- 
+
+  //proteção da página
+  authentication()
 }
 
+//add o nome do usuario no localStorage
 await getName();
 await main();
-openContentPost()

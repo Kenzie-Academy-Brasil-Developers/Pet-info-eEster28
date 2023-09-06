@@ -1,3 +1,4 @@
+import { openContentPost } from "./modal.js";
 import { getCurrentUserInfo, getAllPosts } from "./requests.js";
 
 // Renderiza todos os posts
@@ -34,7 +35,10 @@ export async function renderPost(post) {
   openButton.classList.add("post__open", "text3", "bold");
   openButton.innerText = "Acessar publicação";
   openButton.dataset.id = post.id;
-
+  
+  openButton.addEventListener('click',(event)=>{
+    openContentPost(event)
+  })
   postContainer.append(postHeader, postTitle, postContent, openButton);
 
   return postContainer;
@@ -126,7 +130,7 @@ function renderPostActions(postID) {
 }
 
 // Lida com a data atual
-function handleDate(timeStamp) {
+export function handleDate(timeStamp) {
   const months = [
     "Janeiro",
     "Fevereiro",

@@ -83,7 +83,7 @@
   content: url(../assets/img/sign-out-alt-grey.svg);
 }
 
-.logout__button:hover > .logout__icon {
+.logout__button:hover>.logout__icon {
   content: url(../assets/img/sign-out-alt-black.svg);
 }
 
@@ -149,6 +149,10 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.post__content--modal {
+  color: var(--gray-3);
 }
 
 .post__title,

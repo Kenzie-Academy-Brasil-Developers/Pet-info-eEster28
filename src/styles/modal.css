@@ -48,3 +48,23 @@ label {
     border: none;
     background-color: var(--gray-9);
 }
+
+#modal__open--post { 
+    height: 21rem;
+    min-width: 500px;
+    margin: 6.25rem 9rem 6.25rem 9rem;
+}
+
+.controller__modal {
+    padding: 1.25rem;
+    background-color: var(--gray-9);
+}
+
+.button__close--content{
+    position: absolute;
+    right: 2.5rem;
+    top: 2.5rem;
+    background-color: var(--gray-9);
+    border: none;
+    color: var(--gray-4);
+}

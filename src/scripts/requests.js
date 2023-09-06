@@ -1,6 +1,5 @@
 import {toast} from "./toast.js"
 
-
 const baseUrl = "http://localhost:3333";
 const token = localStorage.getItem("@petinfo:token");
 
@@ -29,8 +28,6 @@ export async function getAllPosts() {
   const posts = await request.json();
   return posts;
 }
-
-// Desenvolva as funcionalidades de requisições aqui
 
 //Login 
 export const requestLogin= async (login) => {
@@ -75,7 +72,6 @@ export const requestLogin= async (login) => {
     }
   })
   return token
-
 }
 
 //Cadastro
@@ -100,7 +96,6 @@ export async function requestResgister(createUser){
 
   })
   return response
-
 }
 
 // Criando post
@@ -121,48 +116,5 @@ export async function createPostRequest(postBody){
     }
   })
   return newPost
-
 }
 
-//Editar post
-export async function editPost(postId, taskBody){
-  const edit = await fetch(`${baseUrl}/posts/${postId}`,{
-    method: 'PATCH',
-    headers:{
-      'Content-Type':'application/json',
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify(taskBody)
-  })
-  .then(async(response) =>{
-    const convert= await response.json()
-    
-    if(response.ok){
-      return convert
-    }else{
-      toast(convert.message, '#c83751')
-    }
-  })
-  return edit
-}
-
-//Delete post
-export async function deletePost(postId){
-  const edit = await fetch(`${baseUrl}/posts/${postId}`,{
-    method: 'DELETE',
-    headers:{
-      'Content-Type':'application/json',
-      Authorization: `Bearer ${token}`
-    }
-  })
-  .then(async(response) =>{
-    const convert= await response.json()
-    
-    if(response.ok){
-      toast(convert.message, '#087F5B')
-    }else{
-      toast(convert.message, '#c83751')
-    }
-  })
-  return edit
-}
