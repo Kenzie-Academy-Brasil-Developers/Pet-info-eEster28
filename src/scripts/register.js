@@ -5,7 +5,6 @@ function handleRegister() {
     const inputs = document.querySelectorAll('.inputs__register')
     const button = document.querySelector('#register__submit')
 
-
     button.addEventListener('click', (event) => {
         event.preventDefault()
         const loginBody = {}

@@ -20,7 +20,8 @@ async function getName(){
   })
   .then(async(response) =>{
     const convert= await response.json()
-    return localStorage.setItem('@petinfo:name', convert.username)
+     localStorage.setItem('@petinfo:name', convert.username)
+     localStorage.setItem('@petinfo:avatar', convert.avatar)
   })
   return get
 }
@@ -43,6 +44,16 @@ function showUserMenu() {
   })
 }
 
+function renderImage(){
+  const imageHeader=document.querySelector('.user__image')
+  const imageUser= localStorage.getItem('@petinfo:avatar')
+
+  imageHeader.src=imageUser
+
+  return imageHeader
+}
+
+
 async function main() {
 
   // Adiciona os eventos de click ao menu flutuante de logout
@@ -57,6 +68,9 @@ async function main() {
 
   //proteção da página
   authentication()
+
+  //renderizar a imagem do usuario
+  renderImage()
 }
 
 //add o nome do usuario no localStorage
